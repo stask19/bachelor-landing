@@ -54,7 +54,7 @@ footer {
 }
 
 /* Адаптивність (Коректне відображення на різних пристроях) */
-@media (max-width: 600px) {
+@media (max-width: 1500px) {
     main {
         width: 95%;
         margin: 10px auto;
