@@ -54,7 +54,7 @@ footer {
 }
 
 /* Адаптивність (Коректне відображення на різних пристроях) */
-@media (max-width: 1500px) {
+@media (max-width: 600px) {
     main {
         width: 95%;
         margin: 10px auto;
@@ -64,17 +64,27 @@ footer {
     }
 }
 
-/* Оптимізація зображень */
-img {
-    border-radius: 5px;
-    display: block;
-    margin: 0 auto;
-}
-.logo {
+/* Стиль для блоку з візуальними елементами */
+.visuals {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
+/* Стиль ТІЛЬКИ для логотипу (робимо його невеликим) */
 .logo img {
     max-height: 100px;
+    width: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* Стиль ТІЛЬКИ для головного фото машини (робимо його великим) */
+.main-photo {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
