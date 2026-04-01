@@ -1,4 +1,3 @@
-/* Простий і чистий стиль для лендінгу */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -53,7 +52,6 @@ footer {
     color: #777;
 }
 
-/* Адаптивність (Коректне відображення на різних пристроях) */
 @media (max-width: 600px) {
     main {
         width: 95%;
@@ -64,13 +62,10 @@ footer {
     }
 }
 
-/* Стиль для блоку з візуальними елементами */
 .visuals {
     text-align: center;
     margin-bottom: 30px;
 }
-
-/* Стиль ТІЛЬКИ для логотипу (робимо його невеликим) */
 
 img {
     display: block;
@@ -78,17 +73,16 @@ img {
     border-radius: 8px;
 }
 
-/* Окреме правило для машини - робимо її великою примусово */
 .main-photo {
     width: 100% !important;
-    max-width: 800px !important;
+    max-width: 750px !important;
     height: auto !important;
-    display: block;
-    margin: 20px auto; /* Перше число (20px) додасть ще трохи відступу зверху */
-    border-radius: 8px;
+    display: block !important;
+    margin: 40px auto !important;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* Окреме правило для логотипу - робимо його маленьким */
 .logo img {
     width: auto !important;
     max-height: 80px !important;
