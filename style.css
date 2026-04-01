@@ -71,20 +71,23 @@ footer {
 }
 
 /* Стиль ТІЛЬКИ для логотипу (робимо його невеликим) */
-.logo img {
-    max-height: 100px;
-    width: auto;
-    display: block;
-    margin: 0 auto 20px auto;
-}
 
-/* Стиль ТІЛЬКИ для головного фото машини (робимо його великим) */
-.main-photo {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
+img {
     display: block;
     margin: 0 auto;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Окреме правило для машини - робимо її великою примусово */
+.main-photo {
+    width: 90% !important; 
+    max-width: 800px !important;
+    height: auto !important;
+}
+
+/* Окреме правило для логотипу - робимо його маленьким */
+.logo img {
+    width: auto !important;
+    max-height: 80px !important;
+    margin-bottom: 20px;
 }
