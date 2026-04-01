@@ -1,98 +1,98 @@
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 header {
-    background: #2c3e50;
-    color: #fff;
-    padding: 2rem 1rem;
-    text-align: center;
+  background: #2c3e50;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+  display: inline;
+  margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #2c3e50;
-    padding-bottom: 5px;
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 5px;
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #777;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #777;
 }
 
 @media (max-width: 600px) {
-    main {
-        width: 95%;
-        margin: 10px auto;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
+  main {
+    width: 95%;
+    margin: 10px auto;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
 }
 
 .visuals {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 img {
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 /* Стиль для шапки з лого */
 .university-header {
-    text-align: center;
-    margin-bottom: 60px; /* Великий відступ до фото авто */
+  text-align: center;
+  margin-bottom: 60px; /* Великий відступ до фото авто */
 }
 
 .logo-img {
-    max-height: 90px !important;
-    width: auto !important;
+  max-height: 90px !important;
+  width: auto !important;
 }
 
 /* Стиль для фото авто */
 .main-visual {
-    text-align: center;
+  text-align: center;
 }
 
 .main-photo {
-    width: 100% !important;
-    max-width: 850px !important; /* Тепер вона точно буде великою */
-    height: auto !important;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 100% !important;
+  max-width: 850px !important; /* Тепер вона точно буде великою */
+  height: auto !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
