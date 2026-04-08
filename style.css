@@ -3,7 +3,7 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f4f7f6;
   color: #333;
 }
 
@@ -31,68 +31,99 @@ nav ul li a {
 }
 
 main {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 20px auto;
-  background: #fff;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  color: #2c3e50;
-  border-bottom: 2px solid #2c3e50;
-  padding-bottom: 5px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-@media (max-width: 600px) {
-  main {
-    width: 95%;
-    margin: 10px auto;
-  }
-  h1 {
-    font-size: 1.5rem;
-  }
-}
-
-.visuals {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-img {
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
-}
-
-/* Стиль для шапки з лого */
 .university-header {
   text-align: center;
-  margin-bottom: 60px; /* Великий відступ до фото авто */
+  margin-bottom: 40px;
 }
 
 .logo-img {
   max-height: 90px !important;
   width: auto !important;
+  display: block;
+  margin: 0 auto;
 }
 
-/* Стиль для фото авто */
-.main-visual {
-  text-align: center;
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px 0;
 }
 
-.main-photo {
-  width: 100% !important;
-  max-width: 850px !important; /* Тепер вона точно буде великою */
-  height: auto !important;
+.car-card {
+  background: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+}
+
+.car-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.car-info {
+  padding: 20px;
+}
+
+.car-info h3 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+}
+
+.specs {
+  color: #777;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.rent-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.rent-btn:hover {
+  background: #219150;
+}
+
+/*Адаптивність*/
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
 }
