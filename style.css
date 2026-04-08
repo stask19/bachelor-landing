@@ -76,6 +76,7 @@ main {
   height: 200px;
   object-fit: cover;
   display: block;
+  filter: none !important;
 }
 
 .car-info {
@@ -101,19 +102,29 @@ main {
 }
 
 .rent-btn {
-  background: #27ae60;
+  background-color: #27ae60;
   color: white;
   border: none;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 8px;
   cursor: pointer;
   width: 100%;
+  font-size: 1rem;
   font-weight: bold;
-  transition: background 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+  display: block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .rent-btn:hover {
-  background: #219150;
+  background-color: #219150;
+}
+
+.rent-btn:active {
+  transform: translateY(1px);
 }
 
 /*Адаптивність*/
