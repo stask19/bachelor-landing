@@ -32,6 +32,65 @@
         </p>
       </section>
 
+      <section
+        id="ahp-selector"
+        style="background-color: #f8f9fa; padding: 30px; border-radius: 10px; margin-bottom: 30px"
+      >
+        <h2 style="text-align: center; margin-bottom: 20px">Розумний підбір авто (AHP)</h2>
+        <p style="text-align: center; margin-bottom: 20px">
+          Дайте відповідь на 3 запитання, і наша система підбере для вас ідеальне авто за допомогою
+          математичного методу аналізу ієрархій.
+        </p>
+
+        <form id="ahp-form" style="max-width: 600px; margin: 0 auto">
+          <div style="margin-bottom: 15px">
+            <label><b>1. Що для вас важливіше: Економія грошей чи Максимальний комфорт?</b></label>
+            <select
+              id="price_vs_comfort"
+              style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px"
+            >
+              <option value="9">Абсолютно важливіша ціна (економія)</option>
+              <option value="5">Ціна трохи важливіша</option>
+              <option value="1" selected>Однаково важливо</option>
+              <option value="0.2">Комфорт трохи важливіший</option>
+              <option value="0.11">Абсолютно важливіший комфорт</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 15px">
+            <label><b>2. Що важливіше: Ціна чи Прохідність (кліренс)?</b></label>
+            <select
+              id="price_vs_clearance"
+              style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px"
+            >
+              <option value="9">Абсолютно важливіша ціна</option>
+              <option value="5">Ціна трохи важливіша</option>
+              <option value="1" selected>Однаково важливо</option>
+              <option value="0.2">Прохідність трохи важливіша</option>
+              <option value="0.11">Абсолютно важливіша прохідність</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 20px">
+            <label><b>3. Що важливіше: Комфорт чи Прохідність?</b></label>
+            <select
+              id="comfort_vs_clearance"
+              style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px"
+            >
+              <option value="9">Абсолютно важливіший комфорт</option>
+              <option value="5">Комфорт трохи важливіший</option>
+              <option value="1" selected>Однаково важливо</option>
+              <option value="0.2">Прохідність трохи важливіша</option>
+              <option value="0.11">Абсолютно важливіша прохідність</option>
+            </select>
+          </div>
+
+          <button type="submit" class="rent-btn" style="width: 100%">
+            Підібрати ідеальне авто
+          </button>
+        </form>
+      </section>
+
       <section id="catalog" class="car-grid">
         <div class="car-card">
           <div class="car-image">
@@ -41,16 +100,7 @@
             <h3>Opel Insignia 2.0 CDTi</h3>
             <p class="specs">Дизель | Механіка | 2013</p>
             <p class="price">1000 грн/доба</p>
-            <button
-              class="rent-btn"
-              onclick="
-                alert(
-                  'Для оренди Opel Insignia, будь ласка, зателефонуйте менеджеру: +38 (099) 123-45-67',
-                )
-              "
-            >
-              Орендувати
-            </button>
+            <button class="rent-btn">Орендувати</button>
           </div>
         </div>
 
@@ -62,16 +112,7 @@
             <h3>Volkswagen Passat B8</h3>
             <p class="specs">Бензин | Автомат | 2019</p>
             <p class="price">1500 грн/доба</p>
-            <button
-              class="rent-btn"
-              onclick="
-                alert(
-                  'Для оренди Volkswagen Passat, будь ласка, зателефонуйте менеджеру: +38 (099) 123-45-67',
-                )
-              "
-            >
-              Орендувати
-            </button>
+            <button class="rent-btn">Орендувати</button>
           </div>
         </div>
 
@@ -83,16 +124,7 @@
             <h3>Toyota Camry 70</h3>
             <p class="specs">Гібрид | Варіатор | 2020</p>
             <p class="price">2000 грн/доба</p>
-            <button
-              class="rent-btn"
-              onclick="
-                alert(
-                  'Для оренди Toyota Camry, будь ласка, зателефонуйте менеджеру: +38 (099) 123-45-67',
-                )
-              "
-            >
-              Орендувати
-            </button>
+            <button class="rent-btn">Орендувати</button>
           </div>
         </div>
       </section>
@@ -101,5 +133,40 @@
     <footer>
       <p>&copy; 2026 Всі права захищені</p>
     </footer>
+
+    <script>
+      // Обробка форми розумного підбору AHP
+      document.getElementById("ahp-form").addEventListener("submit", async (event) => {
+        event.preventDefault(); // Зупиняємо перезавантаження сторінки
+
+        // Збираємо дані з форми
+        const formData = {
+          price_vs_comfort: parseFloat(document.getElementById("price_vs_comfort").value),
+          price_vs_clearance: parseFloat(document.getElementById("price_vs_clearance").value),
+          comfort_vs_clearance: parseFloat(document.getElementById("comfort_vs_clearance").value),
+        };
+
+        alert("Дані зібрано! Відправляємо на бекенд для розрахунку матриць AHP...");
+
+        try {
+          // Відправляємо дані на Python
+          const response = await fetch("http://127.0.0.1:5000/api/recommend", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData), // Перетворюємо дані у JSON
+          });
+
+          const data = await response.json();
+
+          // Красивий вивід результату
+          alert(
+            `ДЯКУЄМО ЗА ВІДПОВІДІ!\n\nРекомендація системи:\nВаше ідеальне авто: ${data.model}\nВпевненість алгоритму: ${data.score}%\n\nПояснення: ${data.reason}`,
+          );
+        } catch (error) {
+          alert("Помилка з'єднання з сервером. Перевірте, чи працює app.py!");
+          console.error(error);
+        }
+      });
+    </script>
   </body>
 </html>
