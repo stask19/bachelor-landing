@@ -135,11 +135,23 @@
     </footer>
 
     <script>
-      // Обробка форми розумного підбору AHP
-      document.getElementById("ahp-form").addEventListener("submit", async (event) => {
-        event.preventDefault(); // Зупиняємо перезавантаження сторінки
+      window.onerror = function (message, source, lineno, colno, error) {
+        fetch("http://127.0.0.1:5000/api/frontend-logs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: message,
+            url: source,
+            line: lineno,
+          }),
+        });
 
-        // Збираємо дані з форми
+        return false;
+      };
+
+      document.getElementById("ahp-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+
         const formData = {
           price_vs_comfort: parseFloat(document.getElementById("price_vs_comfort").value),
           price_vs_clearance: parseFloat(document.getElementById("price_vs_clearance").value),
@@ -148,17 +160,21 @@
 
         alert("Дані зібрано! Відправляємо на бекенд для розрахунку матриць AHP...");
 
+        const traceId = crypto.randomUUID();
+        console.log("Відправляємо запит з Trace ID:", traceId);
+
         try {
-          // Відправляємо дані на Python
           const response = await fetch("http://127.0.0.1:5000/api/recommend", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData), // Перетворюємо дані у JSON
+            headers: {
+              "Content-Type": "application/json",
+              "X-Request-ID": traceId,
+            },
+            body: JSON.stringify(formData),
           });
 
           const data = await response.json();
 
-          // Красивий вивід результату
           alert(
             `ДЯКУЄМО ЗА ВІДПОВІДІ!\n\nРекомендація системи:\nВаше ідеальне авто: ${data.model}\nВпевненість алгоритму: ${data.score}%\n\nПояснення: ${data.reason}`,
           );
