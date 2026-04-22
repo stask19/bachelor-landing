@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request, g, has_request_context
 from flask_cors import CORS
 import numpy as np
 from werkzeug.middleware.profiler import ProfilerMiddleware
+from functools import lru_cache
 
 class RequestIdFilter(logging.Filter):
     def filter(self, record):
@@ -59,50 +60,45 @@ def resource_not_found(e):
     return jsonify({"error": "Ресурс не знайдено", "code": 404}), 404
 
 
-@app.route('/api/frontend-logs', methods=['POST'])
-def receive_frontend_logs():
-    log_data = request.json
-    logger.error(f"FRONTEND ERROR: {log_data.get('message')} | Файл: {log_data.get('url')} | Рядок: {log_data.get('line')}")
-    return jsonify({"status": "Log received"}), 200
+@lru_cache(maxsize=128)
+def calculate_ahp_cached(p_vs_c, p_vs_cl, c_vs_cl):
+  
+    criteria_matrix = np.array([
+        [1,         p_vs_c,       p_vs_cl],
+        [1/p_vs_c,  1,            c_vs_cl],
+        [1/p_vs_cl, 1/c_vs_cl,    1      ]
+    ])
+
+    col_sums = criteria_matrix.sum(axis=0)
+    norm_matrix = criteria_matrix / col_sums
+    weights = norm_matrix.mean(axis=1) 
+    
+    cars = [
+        {"model": "Opel Insignia 2.0 CDTi", "scores": np.array([0.6, 0.2, 0.3]), "reason": "Це найвигідніший варіант для вашого бюджету."},
+        {"model": "Volkswagen Passat B8", "scores": np.array([0.3, 0.4, 0.4]), "reason": "Це ідеальний баланс між ціною, комфортом та практичністю."},
+        {"model": "Toyota Camry 70", "scores": np.array([0.1, 0.4, 0.3]), "reason": "Ви обрали комфорт як пріоритет, і це авто забезпечить його найкраще."}
+    ]
+
+    best_car, best_score, best_reason = None, 0, ""
+
+    for car in cars:
+        final_score = np.sum(car["scores"] * weights)
+        if final_score > best_score:
+            best_score, best_car, best_reason = final_score, car["model"], car["reason"]
+
+    return weights, best_car, best_score, best_reason
 
 @app.route('/api/recommend', methods=['POST'])
 def recommend_car():
     try:
         data = request.json
-        logger.debug(f"Початок розрахунку AHP. Вхідні дані: {data}")
+        logger.debug(f"Отримано вхідні дані: {data}")
 
-        p_vs_c = data['price_vs_comfort']
-        p_vs_cl = data['price_vs_clearance']
-        c_vs_cl = data['comfort_vs_clearance']
-
-        criteria_matrix = np.array([
-            [1,         p_vs_c,       p_vs_cl],
-            [1/p_vs_c,  1,            c_vs_cl],
-            [1/p_vs_cl, 1/c_vs_cl,    1      ]
-        ])
-
-        col_sums = criteria_matrix.sum(axis=0)
-        norm_matrix = criteria_matrix / col_sums
-        weights = norm_matrix.mean(axis=1) 
-        
-        logger.info(f"AHP ваги успішно розраховано: Ціна={weights[0]:.2f}, Комфорт={weights[1]:.2f}, Прохідність={weights[2]:.2f}")
-
-        cars = [
-            {"model": "Opel Insignia 2.0 CDTi", "scores": np.array([0.6, 0.2, 0.3]), "reason": "Це найвигідніший варіант для вашого бюджету."},
-            {"model": "Volkswagen Passat B8", "scores": np.array([0.3, 0.4, 0.4]), "reason": "Це ідеальний баланс між ціною, комфортом та практичністю."},
-            {"model": "Toyota Camry 70", "scores": np.array([0.1, 0.4, 0.3]), "reason": "Ви обрали комфорт як пріоритет, і це авто забезпечить його найкраще."}
-        ]
-
-        best_car = None
-        best_score = 0
-        best_reason = ""
-
-        for car in cars:
-            final_score = np.sum(car["scores"] * weights)
-            if final_score > best_score:
-                best_score = final_score
-                best_car = car["model"]
-                best_reason = car["reason"]
+        weights, best_car, best_score, best_reason = calculate_ahp_cached(
+            float(data['price_vs_comfort']),
+            float(data['price_vs_clearance']),
+            float(data['comfort_vs_clearance'])
+        )
 
         logger.info(f"Система підібрала авто: {best_car} (Оцінка: {best_score:.2f})")
 
@@ -114,7 +110,6 @@ def recommend_car():
         return jsonify(result)
 
     except Exception as e:
-     
         logger.critical(f"Критична помилка в модулі AHP: {str(e)}", exc_info=True)
         return jsonify({"error": "Внутрішня помилка сервера при розрахунку"}), 500
 
