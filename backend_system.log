@@ -133,3 +133,89 @@
 2026-05-25 20:08:02,861 - [faaedf31-5f69-4bcc-b6c8-8c653d7d39cc] - INFO - [app] - Отримано запит: GET /favicon.ico
 2026-05-25 20:08:02,861 - [faaedf31-5f69-4bcc-b6c8-8c653d7d39cc] - WARNING - [app] - Спроба доступу до неіснуючого ресурсу: http://127.0.0.1:5000/favicon.ico
 2026-05-25 20:08:02,862 - [faaedf31-5f69-4bcc-b6c8-8c653d7d39cc] - INFO - [app] - Відповідь сервера: статус 404
+2026-05-25 20:09:46,074 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:09:46,471 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:13:34,726 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:13:35,130 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:19:19,417 - [926218b5-88f1-4d8d-841f-89e9f5314290] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html | Рядок: 233
+2026-05-25 20:19:41,765 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:19:42,158 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:19:45,409 - [3434e1e9-8245-4b57-a418-51664bc6f464] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html | Рядок: 233
+2026-05-25 20:20:35,943 - [9d915057-e3b7-40ca-9a39-5ec77567cf31] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html | Рядок: 233
+2026-05-25 20:20:47,888 - [475f11bd-6c67-46f1-9e50-4148999b4f14] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:20:47,888 - [475f11bd-6c67-46f1-9e50-4148999b4f14] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:20:47,895 - [6d194755-0347-44fa-86b8-4e7e49e758fd] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:20:47,896 - [6d194755-0347-44fa-86b8-4e7e49e758fd] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 5, 'price_vs_clearance': 0.2, 'comfort_vs_clearance': 9}
+2026-05-25 20:20:47,905 - [6d194755-0347-44fa-86b8-4e7e49e758fd] - INFO - [app] - Система підібрала авто: Audi Q5 2.0 TFSI (Оцінка: 0.60)
+2026-05-25 20:20:47,909 - [6d194755-0347-44fa-86b8-4e7e49e758fd] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:23:22,127 - [881f53e6-b981-4b18-aff9-8057dcb52218] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 233
+2026-05-25 20:23:38,062 - [e9fe920b-9646-49a2-b09f-e603cdb2b796] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:23:38,063 - [e9fe920b-9646-49a2-b09f-e603cdb2b796] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:23:38,069 - [8f846590-5d9a-4df6-8807-3bd187444416] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:23:38,070 - [8f846590-5d9a-4df6-8807-3bd187444416] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 1, 'price_vs_clearance': 1, 'comfort_vs_clearance': 1}
+2026-05-25 20:23:38,071 - [8f846590-5d9a-4df6-8807-3bd187444416] - INFO - [app] - Система підібрала авто: Audi Q5 2.0 TFSI (Оцінка: 0.60)
+2026-05-25 20:23:38,072 - [8f846590-5d9a-4df6-8807-3bd187444416] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:24:28,647 - [4a813df8-c77e-4d46-8691-ca42e33f4287] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 233
+2026-05-25 20:28:12,871 - [4fd0d18f-5756-4c2f-9961-aa1c1d43e39d] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 233
+2026-05-25 20:28:18,973 - [2a90e16f-a06a-406f-87ab-c5e077d04d7b] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:28:18,974 - [2a90e16f-a06a-406f-87ab-c5e077d04d7b] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:28:18,983 - [9dd01346-69e2-4a03-962e-8a525e2bf792] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:28:18,984 - [9dd01346-69e2-4a03-962e-8a525e2bf792] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 5, 'price_vs_clearance': 0.2, 'comfort_vs_clearance': 0.11}
+2026-05-25 20:28:18,986 - [9dd01346-69e2-4a03-962e-8a525e2bf792] - INFO - [app] - Система підібрала авто: Audi Q5 2.0 TFSI (Оцінка: 0.66)
+2026-05-25 20:28:18,986 - [9dd01346-69e2-4a03-962e-8a525e2bf792] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:28:28,684 - [22b0d517-9c8a-4caf-a438-16edaf0811f9] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 233
+2026-05-25 20:29:07,972 - [b5ce2b54-06f8-42db-9ff4-232ff37fcfb0] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:29:07,973 - [b5ce2b54-06f8-42db-9ff4-232ff37fcfb0] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:29:07,979 - [9fd32a18-ba22-43d9-952f-4e4b3c9ead8d] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:29:07,981 - [9fd32a18-ba22-43d9-952f-4e4b3c9ead8d] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 5, 'price_vs_clearance': 0.2, 'comfort_vs_clearance': 0.11}
+2026-05-25 20:29:07,981 - [9fd32a18-ba22-43d9-952f-4e4b3c9ead8d] - INFO - [app] - Система підібрала авто: Audi Q5 2.0 TFSI (Оцінка: 0.66)
+2026-05-25 20:29:07,983 - [9fd32a18-ba22-43d9-952f-4e4b3c9ead8d] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:29:32,437 - [d3a3ab98-5746-494c-a32b-e8771f63a06f] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 233
+2026-05-25 20:34:26,675 - [38402a33-c3f5-47d3-8699-5f0e504d30a5] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: document.getElementById(...) is not a function | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 258
+2026-05-25 20:34:30,170 - [79a349a4-47a6-4ed7-9d00-4916288c0c13] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: document.getElementById(...) is not a function | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 258
+2026-05-25 20:34:40,379 - [ea05a61a-9bfb-410b-a291-8899d7d3b4a5] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:34:40,380 - [ea05a61a-9bfb-410b-a291-8899d7d3b4a5] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:34:40,388 - [e04e3101-01f6-480d-bdc3-6b61a5432c71] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:34:40,389 - [e04e3101-01f6-480d-bdc3-6b61a5432c71] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 9, 'price_vs_clearance': 5, 'comfort_vs_clearance': 1}
+2026-05-25 20:34:40,390 - [e04e3101-01f6-480d-bdc3-6b61a5432c71] - INFO - [app] - Система підібрала авто: Skoda Octavia Tour 1.6 (Оцінка: 0.80)
+2026-05-25 20:34:40,391 - [e04e3101-01f6-480d-bdc3-6b61a5432c71] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:34:59,438 - [9dfe40f6-28dd-4c35-8767-073b3ee03dc8] - ERROR - [app] - FRONTEND ERROR: Uncaught ReferenceError: handleBooking is not defined | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 156
+2026-05-25 20:34:59,485 - [e7f1c214-104b-487b-b5b0-992599cc044f] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: document.getElementById(...) is not a function | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 258
+2026-05-25 20:35:10,523 - [2eacb2e6-7c20-45c7-bb4a-f4e8adcc5a0b] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: document.getElementById(...) is not a function | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 258
+2026-05-25 20:35:26,248 - [bac6e58a-5c96-4ea7-a4ac-5e01d84d763e] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:35:26,249 - [bac6e58a-5c96-4ea7-a4ac-5e01d84d763e] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:35:26,255 - [9e62f2e5-9336-4896-bd8c-93bb83a01cd5] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:35:26,256 - [9e62f2e5-9336-4896-bd8c-93bb83a01cd5] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 5, 'price_vs_clearance': 1, 'comfort_vs_clearance': 9}
+2026-05-25 20:35:26,258 - [9e62f2e5-9336-4896-bd8c-93bb83a01cd5] - INFO - [app] - Система підібрала авто: Skoda Octavia Tour 1.6 (Оцінка: 0.63)
+2026-05-25 20:35:26,258 - [9e62f2e5-9336-4896-bd8c-93bb83a01cd5] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:35:46,399 - [f0855264-596b-4546-b67f-5e5f128ecd57] - ERROR - [app] - FRONTEND ERROR: Uncaught ReferenceError: handleBooking is not defined | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 156
+2026-05-25 20:35:46,443 - [6197d1f3-9f4b-47a2-b70f-ede5c3f8f38a] - ERROR - [app] - FRONTEND ERROR: Uncaught TypeError: document.getElementById(...) is not a function | Файл: file:///C:/Users/Expert_PC/Documents/bachelor-landing/index.html? | Рядок: 258
+2026-05-25 20:38:42,996 - [ca519058-5cfc-45e0-b9d2-630110f9ef72] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:38:42,996 - [ca519058-5cfc-45e0-b9d2-630110f9ef72] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:38:43,003 - [3c349e1c-7b1d-4b6d-853d-c07d1f4fbfc3] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:38:43,005 - [3c349e1c-7b1d-4b6d-853d-c07d1f4fbfc3] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 9, 'price_vs_clearance': 5, 'comfort_vs_clearance': 9}
+2026-05-25 20:38:43,006 - [3c349e1c-7b1d-4b6d-853d-c07d1f4fbfc3] - INFO - [app] - Система підібрала авто: Skoda Octavia Tour 1.6 (Оцінка: 0.72)
+2026-05-25 20:38:43,007 - [3c349e1c-7b1d-4b6d-853d-c07d1f4fbfc3] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:40:24,869 - [7da9f149-019b-4b06-ae52-e69874e1a268] - INFO - [app] - Отримано запит: OPTIONS /api/book
+2026-05-25 20:40:24,869 - [7da9f149-019b-4b06-ae52-e69874e1a268] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:40:24,875 - [c0525e19-8b98-46f8-8e23-069d9a612d24] - INFO - [app] - Отримано запит: POST /api/book
+2026-05-25 20:40:24,877 - [c0525e19-8b98-46f8-8e23-069d9a612d24] - INFO - [app] - Відповідь сервера: статус 400
+2026-05-25 20:40:30,538 - [6407e17d-d690-4b0f-9d71-6ec29c7bc117] - INFO - [app] - Отримано запит: OPTIONS /api/book
+2026-05-25 20:40:30,538 - [6407e17d-d690-4b0f-9d71-6ec29c7bc117] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:40:30,543 - [f8f4169d-a075-4d50-a4f3-e5232708fd98] - INFO - [app] - Отримано запит: POST /api/book
+2026-05-25 20:40:30,544 - [f8f4169d-a075-4d50-a4f3-e5232708fd98] - INFO - [app] - Відповідь сервера: статус 400
+2026-05-25 20:49:52,455 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:50:49,024 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:51:00,762 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:52:40,260 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:52:40,660 - [SYSTEM] - INFO - [app] - === ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===
+2026-05-25 20:53:01,972 - [fed38461-0b7d-4762-8cac-3c2c9d785655] - INFO - [app] - Отримано запит: OPTIONS /api/recommend
+2026-05-25 20:53:01,972 - [fed38461-0b7d-4762-8cac-3c2c9d785655] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:53:01,981 - [a2c6b673-be7e-4b6f-bf6d-0f9724a8c0de] - INFO - [app] - Отримано запит: POST /api/recommend
+2026-05-25 20:53:01,982 - [a2c6b673-be7e-4b6f-bf6d-0f9724a8c0de] - DEBUG - [app] - Отримано вхідні дані: {'price_vs_comfort': 5, 'price_vs_clearance': 1, 'comfort_vs_clearance': 0.11}
+2026-05-25 20:53:01,983 - [a2c6b673-be7e-4b6f-bf6d-0f9724a8c0de] - INFO - [app] - Система підібрала авто: Skoda Octavia Tour 1.6 (Оцінка: 0.71)
+2026-05-25 20:53:01,984 - [a2c6b673-be7e-4b6f-bf6d-0f9724a8c0de] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:53:29,758 - [d45af220-a66a-45af-bab8-18e0aa116bbe] - INFO - [app] - Отримано запит: OPTIONS /api/book
+2026-05-25 20:53:29,758 - [d45af220-a66a-45af-bab8-18e0aa116bbe] - INFO - [app] - Відповідь сервера: статус 200
+2026-05-25 20:53:29,764 - [ca532457-7cf4-4f77-b833-eb61d8ec5df5] - INFO - [app] - Отримано запит: POST /api/book
+2026-05-25 20:53:30,600 - [ca532457-7cf4-4f77-b833-eb61d8ec5df5] - INFO - [app] - Відповідь сервера: статус 200

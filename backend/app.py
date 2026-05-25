@@ -133,7 +133,15 @@ def recommend_car():
 
         logger.info(f"Система підібрала авто: {best_car} (Оцінка: {best_score:.2f})")
 
+        conn = sqlite3.connect('cars.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT id FROM cars WHERE model = ?', (best_car,))
+        db_row = cursor.fetchone()
+        car_id = db_row[0] if db_row else 0
+        conn.close()
+
         result = {
+            "id": car_id,
             "model": best_car,
             "score": round(best_score * 100, 1),
             "reason": best_reason
@@ -151,7 +159,6 @@ def receive_frontend_logs():
     return jsonify({"status": "Log received"}), 200
 
 def send_email_notification(user_email, user_name, car_model):
-    # УВАГА: Заміни на свої реальні дані. Для Gmail потрібен "Пароль додатка" (App Password)
     sender_email = "your_email@gmail.com" 
     sender_password = "your_app_password" 
     
