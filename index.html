@@ -94,7 +94,7 @@
       <section id="catalog" class="car-grid">
         <div class="car-card">
           <div class="car-image">
-            <img src="insignia1.jpg" alt="Opel Insignia" />
+            <img src="images/insignia1.jpg" alt="Opel Insignia" />
           </div>
           <div class="car-info">
             <h3>Opel Insignia</h3>
@@ -106,7 +106,11 @@
 
         <div class="car-card">
           <div class="car-image">
-            <img src="passat1.jpg" alt="Volkswagen Passat" style="filter: hue-rotate(90deg)" />
+            <img
+              src="images/passat1.jpg"
+              alt="Volkswagen Passat"
+              style="filter: hue-rotate(90deg)"
+            />
           </div>
           <div class="car-info">
             <h3>Volkswagen Passat B8</h3>
@@ -118,13 +122,24 @@
 
         <div class="car-card">
           <div class="car-image">
-            <img src="camry(v70).jpg" alt="Toyota Camry" style="filter: grayscale(1)" />
+            <img src="images/camry(v70).jpg" alt="Toyota Camry" style="filter: grayscale(1)" />
           </div>
           <div class="car-info">
             <h3>Toyota Camry 70</h3>
             <p class="specs">Гібрид | Варіатор | 2020</p>
             <p class="price">2000 грн/доба</p>
             <button class="rent-btn">Орендувати</button>
+          </div>
+
+          <div id="result-card" class="result-card hidden">
+            <h2 class="result-title">🎉 Ваше ідеальне авто знайдено!</h2>
+            <div class="car-info">
+              <h3 id="car-model" class="car-model-name"></h3>
+              <div class="score-badge">
+                Впевненість алгоритму: <span id="car-score" class="highlight-score"></span>%
+              </div>
+              <p id="car-reason" class="car-reason-text"></p>
+            </div>
           </div>
         </div>
       </section>
@@ -175,9 +190,13 @@
 
           const data = await response.json();
 
-          alert(
-            `ДЯКУЄМО ЗА ВІДПОВІДІ!\n\nРекомендація системи:\nВаше ідеальне авто: ${data.model}\nВпевненість алгоритму: ${data.score}%\n\nПояснення: ${data.reason}`,
-          );
+          document.getElementById("car-model").innerText = data.model;
+          document.getElementById("car-score").innerText = data.score;
+          document.getElementById("car-reason").innerText = data.reason;
+          document.getElementById("result-card").classList.remove("hidden");
+          document
+            .getElementById("result-card")
+            .scrollIntoView({ behavior: "smooth", block: "nearest" });
         } catch (error) {
           alert("Помилка з'єднання з сервером. Перевірте, чи працює app.py!");
           console.error(error);
