@@ -159,8 +159,8 @@ def receive_frontend_logs():
     return jsonify({"status": "Log received"}), 200
 
 def send_email_notification(user_email, user_name, car_model):
-    sender_email = "your_email@gmail.com" 
-    sender_password = "your_app_password" 
+    sender_email = "staskulizhka@gmail.com" 
+    sender_password = "yhcgoggyantakksr" 
     
     msg = MIMEMultipart()
     msg['From'] = sender_email
