@@ -4,7 +4,7 @@ import sqlite3
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from flask import Flask, jsonify, request, g, has_request_context
+from flask import Flask, request, jsonify, render_template, g, has_request_context
 from flask_cors import CORS
 import numpy as np
 from functools import lru_cache
@@ -35,6 +35,10 @@ logger.addHandler(stream_handler)
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[10])
 
@@ -227,5 +231,4 @@ def book_car():
         conn.close()
 
 if __name__ == '__main__':
-    logger.info("=== ЗАПУСК СИСТЕМИ: Сервер Car Rental DSS ініціалізовано ===")
-    app.run(debug=True, port=5000)
+    app.run(debug=True, threaded=True, port=5000)

@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Розробка інформаційної системи надання послуг оренди автомобілів."
+    />
+    <title>ІС Оренди Авто | Premium</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-dark: #0f172a;
+        --surface: rgba(30, 41, 59, 0.7);
+        --surface-border: rgba(255, 255, 255, 0.1);
+        --primary: #38bdf8;
+        --gradient: linear-gradient(135deg, #0ea5e9, #6366f1);
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        min-height: 100vh;
+        background-image:
+          radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+          radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.15) 0px, transparent 50%);
+        background-attachment: fixed;
+        padding-bottom: 50px;
+      }
+
+      /* =========================================
+           GLASSMORPHISM (ЕФЕКТ СКЛА ДЛЯ КАРТОК)
+           ========================================= */
+      .glass-card {
+        background: var(--surface);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--surface-border);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        padding: 40px;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      /* =========================================
+           ШАПКА ТА ТЕКСТИ
+           ========================================= */
+      header {
+        text-align: center;
+        padding: 50px 20px 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-weight: 400;
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      }
+
+      /* =========================================
+           ФОРМА ПІДБОРУ AHP
+           ========================================= */
+      .form-container {
+        max-width: 700px;
+        margin: 0 auto 50px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--text-main);
+        font-size: 1.05rem;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 15px;
+        background-color: rgba(15, 23, 42, 0.6);
+        border: 1px solid var(--surface-border);
+        border-radius: 12px;
+        color: var(--text-main);
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        transition: all 0.3s;
+        outline: none;
+      }
+
+      select:focus,
+      input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+      }
+
+      /* =========================================
+           КНОПКИ
+           ========================================= */
+      .btn {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        padding: 16px 30px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px -10px rgba(14, 165, 233, 0.5);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px -10px rgba(14, 165, 233, 0.7);
+      }
+
+      /* =========================================
+           КАРТКА РЕЗУЛЬТАТУ
+           ========================================= */
+      #result-card {
+        max-width: 600px;
+        margin: 0 auto 50px;
+        text-align: center;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .score-badge {
+        display: inline-block;
+        background: rgba(34, 197, 94, 0.1);
+        color: #4ade80;
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-weight: 600;
+        margin: 15px 0;
+        border: 1px solid rgba(34, 197, 94, 0.2);
+      }
+
+      #car-result-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin: 20px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .car-reason-text {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animated-show {
+        animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* =========================================
+           КАТАЛОГ АВТОМОБІЛІВ
+           ========================================= */
+      .catalog-title {
+        text-align: center;
+        margin: 60px 0 30px;
+        font-size: 2rem;
+      }
+
+      .car-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .car-card {
+        background: var(--surface);
+        border: 1px solid var(--surface-border);
+        border-radius: 16px;
+        padding: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .car-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        background: rgba(30, 41, 59, 0.9);
+      }
+
+      .car-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .specs {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin: 10px 0;
+      }
+      .price {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      /* =========================================
+           МОДАЛЬНЕ ВІКНО БРОНЮВАННЯ
+           ========================================= */
+      .modal {
+        display: none; /* Flex додається через JS */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        width: 90%;
+        max-width: 450px;
+        padding: 40px;
+        position: relative;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        color: var(--text-muted);
+        font-size: 30px;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .close-btn:hover {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Інформаційна система оренди</h1>
+      <p class="subtitle">
+        Розумний підбір автомобіля за допомогою математичного методу аналізу ієрархій (AHP).
+        Знайдіть ідеальний баланс між комфортом, прохідністю та ціною.
+      </p>
+    </header>
+
+    <main>
+      <section class="form-container">
+        <form id="ahp-form" class="glass-card">
+          <h2 style="text-align: center; margin-bottom: 30px">Підбір автотранспорту</h2>
+
+          <div class="form-group">
+            <label>1. Що для вас важливіше: Економія чи Комфорт?</label>
+            <select id="price_vs_comfort">
+              <option value="9">Абсолютно важливіша ціна (економія)</option>
+              <option value="5">Ціна трохи важливіша</option>
+              <option value="1" selected>Однаково важливо</option>
+              <option value="0.2">Комфорт трохи важливіший</option>
+              <option value="0.11">Абсолютно важливіший комфорт</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>2. Що важливіше: Ціна чи Прохідність (кліренс)?</label>
+            <select id="price_vs_clearance">
+              <option value="9">Абсолютно важливіша ціна</option>
+              <option value="5">Ціна трохи важливіша</option>
+              <option value="1" selected>Однаково важливо</option>
+              <option value="0.2">Прохідність трохи важливіша</option>
+              <option value="0.11">Абсолютно важливіша прохідність</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>3. Що важливіше: Комфорт чи Прохідність?</label>
+            <select id="comfort_vs_clearance">
+              <option value="9">Абсолютно важливіший комфорт</option>
+              <option value="5">Комфорт трохи важливіший</option>
+              <option value="1" selected>Однаково важливо</option>
+              <option value="0.2">Прохідність трохи важливіша</option>
+              <option value="0.11">Абсолютно важливіша прохідність</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Розрахувати ідеальне авто</button>
+        </form>
+      </section>
+
+      <section id="result-card" class="glass-card hidden">
+        <h2 style="color: var(--primary)">🎉 Ваш ідеальний вибір!</h2>
+
+        <img id="car-result-image" src="" alt="Car Image" style="display: none" />
+
+        <h3 id="car-model" style="font-size: 2rem; margin-top: 15px"></h3>
+
+        <div class="score-badge">Впевненість алгоритму: <span id="car-score"></span>%</div>
+
+        <p id="car-reason" class="car-reason-text"></p>
+
+        <button id="rent-btn-dynamic" class="btn">Оформити оренду</button>
+      </section>
+
+      <h2 class="catalog-title">Популярні авто в парку</h2>
+      <section class="car-grid">
+        <div class="car-card">
+          <img src="/static/images/insignia.jpg" alt="Opel Insignia" />
+        </div>
+        <div class="car-card">
+          <img src="/static/images/passat.jpg" alt="Volkswagen Passat" />
+        </div>
+        <div class="car-card">
+          <img src="/static/images/camry70.jpg" alt="Toyota Camry" />
+        </div>
+      </section>
+    </main>
+
+    <div id="bookingModal" class="modal">
+      <div class="glass-card modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 style="margin-bottom: 25px">Оформлення оренди</h2>
+
+        <form id="bookingForm">
+          <input type="hidden" id="book_car_id" />
+
+          <div class="form-group">
+            <label for="book_name">Ваше ПІБ:</label>
+            <input type="text" id="book_name" required placeholder="Наприклад: Іваненко Іван" />
+          </div>
+
+          <div class="form-group">
+            <label for="book_email">Ваш Email:</label>
+            <input type="email" id="book_email" required placeholder="email@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="book_phone">Номер телефону:</label>
+            <input type="tel" id="book_phone" required placeholder="+380..." />
+          </div>
+
+          <button type="submit" class="btn" style="margin-top: 10px">Підтвердити бронювання</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Логування помилок
+      window.onerror = function (message, source, lineno, colno, error) {
+        fetch("http://127.0.0.1:5000/api/frontend-logs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: message, url: source, line: lineno }),
+        }).catch(() => {});
+        return false;
+      };
+
+      // Обробка форми AHP (Підбір)
+      const ahpForm = document.getElementById("ahp-form");
+      if (ahpForm) {
+        ahpForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = {
+            price_vs_comfort: parseFloat(document.getElementById("price_vs_comfort").value),
+            price_vs_clearance: parseFloat(document.getElementById("price_vs_clearance").value),
+            comfort_vs_clearance: parseFloat(document.getElementById("comfort_vs_clearance").value),
+          };
+
+          const traceId = crypto.randomUUID();
+
+          try {
+            const response = await fetch("http://127.0.0.1:5000/api/recommend", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-Request-ID": traceId,
+              },
+              body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            // Заповнюємо дані результату
+            document.getElementById("car-model").innerText = data.model;
+            document.getElementById("car-score").innerText = data.score;
+            document.getElementById("car-reason").innerText = data.reason;
+
+            // Обробка зображення, що прийшло з бази
+            if (data.image_url) {
+              const imgEl = document.getElementById("car-result-image");
+              imgEl.src = "http://127.0.0.1:5000" + data.image_url;
+              imgEl.style.display = "block";
+            }
+
+            // Прив'язуємо ID до кнопки оренди
+            document.getElementById("rent-btn-dynamic").onclick = function () {
+              openModal(data.id);
+            };
+
+            // Анімація появи картки
+            let resultCard = document.getElementById("result-card");
+            resultCard.classList.remove("hidden");
+
+            // Перезапуск анімації якщо картка вже була відкрита
+            resultCard.classList.remove("animated-show");
+            void resultCard.offsetWidth; // Trigger reflow
+            resultCard.classList.add("animated-show");
+
+            resultCard.scrollIntoView({ behavior: "smooth", block: "center" });
+          } catch (error) {
+            alert("Помилка з'єднання з сервером. Перевірте, чи працює app.py!");
+            console.error(error);
+          }
+        });
+      }
+
+      // Керування Модальним вікном
+      const modal = document.getElementById("bookingModal");
+
+      function openModal(carId) {
+        document.getElementById("book_car_id").value = carId;
+        modal.classList.add("active");
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.getElementById("bookingForm").reset();
+      }
+
+      // Закриття при кліку поза вікном
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
+
+      // Обробка форми бронювання
+      const bookingForm = document.getElementById("bookingForm");
+      if (bookingForm) {
+        bookingForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const btn = this.querySelector('button[type="submit"]');
+          const originalText = btn.innerText;
+          btn.innerText = "Обробка...";
+          btn.disabled = true;
+
+          const bookingData = {
+            car_id: parseInt(document.getElementById("book_car_id").value),
+            full_name: document.getElementById("book_name").value,
+            email: document.getElementById("book_email").value,
+            phone: document.getElementById("book_phone").value,
+          };
+
+          try {
+            const response = await fetch("http://127.0.0.1:5000/api/book", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(bookingData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.status === "success") {
+              alert(`🎉 Успішно заброньовано!\n${result.message}`);
+              closeModal();
+              window.location.reload();
+            } else {
+              alert(`❌ Помилка: ${result.message}`);
+            }
+          } catch (error) {
+            console.error("Помилка:", error);
+            alert("Сталася помилка. Перевір термінал Flask.");
+          } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

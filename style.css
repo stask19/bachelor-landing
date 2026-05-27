@@ -1,296 +1,187 @@
+/* Базові налаштування Темної теми */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121418; /* Дуже темний вугільний фон */
+  color: #e0e6ed; /* Світло-сірий текст для комфортного читання */
   margin: 0;
-  padding: 0;
-  background-color: #f4f7f6;
-  color: #333;
-}
-
-header {
-  background: #2c3e50;
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-main {
-  max-width: 1200px;
-  margin: 20px auto;
   padding: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.university-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.logo-img {
-  max-height: 90px !important;
-  width: auto !important;
-  display: block;
-  margin: 0 auto;
-}
-
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  padding: 20px 0;
-}
-
-.car-card {
-  background: #fff;
+/* Контейнери (Форма AHP, Картка Результату, Модальне вікно) */
+#ahp-form,
+#result-card,
+.modal-content {
+  background-color: #1a1e24; /* Трохи світліший темний фон картки */
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  border: 1px solid #eee;
-  display: flex;
-  flex-direction: column;
-  max-width: 350px;
-}
-
-.car-card:hover {
-  transform: translateY(-8px);
-}
-
-.car-image img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  filter: none !important;
-}
-
-.car-info {
-  padding: 20px;
-}
-
-.car-info h3 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
-}
-
-.specs {
-  color: #777;
-  font-size: 0.85rem;
-  margin-bottom: 15px;
-}
-
-.price {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #e74c3c;
-  margin-bottom: 15px;
-}
-
-.rent-btn {
-  background-color: #27ae60;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: bold;
-  transition:
-    background-color 0.2s,
-    transform 0.1s;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-}
-
-.rent-btn:hover {
-  background-color: #219150;
-}
-
-.rent-btn:active {
-  transform: translateY(1px);
-}
-
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-}
-
-.hidden {
-  display: none !important;
-}
-
-.result-card {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: white;
-  border-radius: 15px;
   padding: 30px;
-  margin-top: 30px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  animation: slideUpFade 0.6s ease-out forwards;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid #2a303a; /* Тонка рамка */
+  margin-bottom: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.result-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #ffdd57;
+#result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Заголовки */
+h1,
+h2,
+h3 {
+  color: #ffffff;
   font-weight: 600;
 }
 
-.car-model-name {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 10px 0;
-  letter-spacing: 1px;
+/* Слайдери */
+input[type="range"] {
+  width: 100%;
+  margin: 15px 0;
+  accent-color: #3498db; /* Яскравий синій акцент для повзунків */
 }
 
-.score-badge {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 10px 20px;
-  border-radius: 25px;
-  display: inline-block;
-  font-size: 18px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(5px);
+/* Текстові поля та поля вводу (Модальне вікно) */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0 20px;
+  background-color: #1a1e24; /* Фон поля такий же, як у картки */
+  border: 2px solid #2a303a; /* Світліша рамка */
+  border-radius: 8px;
+  color: #ffffff; /* Білий текст у полі */
+  font-size: 15px;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
-.highlight-score {
-  font-weight: bold;
-  color: #4ade80;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+  border-color: #3498db; /* Синій фокус */
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+  outline: none;
 }
 
-.car-reason-text {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #e2e8f0;
+/* Кнопки */
+button,
+.submit-btn {
+  background-color: #3498db; /* Яскравий синій */
+  color: #ffffff;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
-@keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+button:hover,
+.submit-btn:hover {
+  background-color: #2980b9; /* Трохи темніший синій при наведенні */
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+  transform: translateY(-2px);
+}
+
+button:active,
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+#result-card img {
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
+  margin: 15px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cars-container,
+.row,
+.catalog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.car-card,
+.card {
+  background-color: #1a1e24;
+  border: 1px solid #2a303a;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.car-card:hover,
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.car-card img,
+.card img,
+img.car-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+#result-card {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
 }
 
 .modal {
+  display: none;
   position: fixed;
   z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background-color: #ffffff;
-  margin: 12% auto;
-  padding: 25px 30px;
-  border-radius: 12px;
+  margin: 0 !important;
   width: 90%;
-  max-width: 420px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  position: relative;
-  animation: fadeInModal 0.3s ease-out;
+  max-width: 500px;
 }
 
-@keyframes fadeInModal {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
+.close,
 .close-btn {
-  color: #888;
+  color: #6c7a89;
   position: absolute;
   top: 15px;
   right: 20px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.3s;
 }
 
+.close:hover,
 .close-btn:hover {
-  color: #000;
-}
-
-.modal h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #333;
-}
-
-.form-group {
-  margin-bottom: 18px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  color: #555;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  box-sizing: border-box;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.2s;
-}
-
-.submit-btn:hover {
-  background-color: #218838;
+  color: #ffffff;
 }
